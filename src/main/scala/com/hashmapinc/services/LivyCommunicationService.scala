@@ -1,7 +1,5 @@
 package com.hashmapinc.services
 
-import java.util
-
 import com.fasterxml.jackson.annotation.JsonInclude.Include
 import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
@@ -15,7 +13,6 @@ import org.springframework.http._
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.stereotype.Service
 import org.springframework.web.client.{ResourceAccessException, RestTemplate}
-
 import scala.util.{Failure, Success, Try}
 
 @Service
