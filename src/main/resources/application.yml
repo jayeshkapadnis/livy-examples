@@ -1,0 +1,7 @@
+server.port: 9000
+
+livy:
+  host: 192.168.0.4
+  port: 8998
+  app:
+    location: /usr/livy-server-0.3.0/upload/
