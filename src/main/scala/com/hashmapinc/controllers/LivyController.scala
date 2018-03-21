@@ -20,7 +20,6 @@ class LivyController @Autowired()(service: LivyCommunicationService) {
 					.path("/{id}")
 					.buildAndExpand(b.id)
 					.toUri
-				println("URI is ", uri)
 				 ResponseEntity.created(uri).body(b)
 			case Left(m) => ResponseEntity.badRequest().body(m)
 		}
@@ -36,9 +35,19 @@ class LivyController @Autowired()(service: LivyCommunicationService) {
 
 	@RequestMapping(path = Array("/batches"), method = Array(RequestMethod.GET))
 	def getBatches() ={
-		service.batches match {
+		service.batches() match {
 			case Right(b) => ResponseEntity.ok(b)
 			case Left(m) => ResponseEntity.badRequest().body(m)
 		}
 	}
+
+	/*@RequestMapping(path = Array("/batches/{id}"), method = Array(RequestMethod.DELETE))
+	def deleteBatch() ={
+		service.batches match {
+			case Right(b) => ResponseEntity.ok(b)
+			case Left(m) => ResponseEntity.badRequest().body(m)
+		}
+	}*/
+
+
 }

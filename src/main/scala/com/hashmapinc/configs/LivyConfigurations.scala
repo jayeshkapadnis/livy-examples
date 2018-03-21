@@ -10,7 +10,7 @@ class LivyConfigurations {
 	var host: String = _
 
 	@Value("${livy.port}")
-	var port: String = _
+	var port: Int = _
 
 	@Value("${livy.app.location}")
 	var location: String = _

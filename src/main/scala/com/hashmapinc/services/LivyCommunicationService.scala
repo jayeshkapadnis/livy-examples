@@ -39,7 +39,7 @@ class LivyCommunicationService @Autowired()(config: LivyConfigurations){
 		}
 	}
 
-	def fetchBatchById(id: Integer) ={
+	def fetchBatchById(id: Integer): Either[Unsuccessful, Batch] ={
 		val url = s"$baseUrl/batches/${Integer.toString(id)}"
 		val headers = new HttpHeaders()
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE)
