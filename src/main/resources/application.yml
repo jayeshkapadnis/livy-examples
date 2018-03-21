@@ -1,5 +1,11 @@
 server.port: 9000
 
+spring:
+  application:
+    name: livy-examples
+
+spring.logging.file: ${LOG_FILE:target}
+
 livy:
   host: "${LIVY_HOST:192.168.0.4}"
   port: "${LIVY_PORT:8998}"

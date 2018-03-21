@@ -8,9 +8,7 @@ object Responses {
 
 	case class Batch(@BeanProperty id: Integer, @BeanProperty appId: String,
 									 @BeanProperty appInfo: Map[String, String], @BeanProperty log: List[String],
-									 @BeanProperty state: String){
-		def this() = this(-1, "", Map.empty[String, String], Nil, "invalid")
-	}
+									 @BeanProperty state: String)
 
 	case class Batches(@BeanProperty from: Int = 0, @BeanProperty total: Int = 0, @BeanProperty sessions: List[Batch]){
 		def this() = this(0, 0, Nil)
