@@ -2,6 +2,7 @@ package com.hashmapinc.controllers
 
 import com.hashmapinc.models.Requests.CreateBatch
 import com.hashmapinc.services.LivyCommunicationService
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.{MediaType, ResponseEntity}
 import org.springframework.web.bind.annotation._
@@ -11,10 +12,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 @RequestMapping(Array("/api/v1/livy"))
 class LivyController @Autowired()(service: LivyCommunicationService) {
 
+	private val logger = LoggerFactory.getLogger(classOf[LivyController])
+
 	@RequestMapping(path = Array("/batches"), method = Array(RequestMethod.POST), consumes = Array(MediaType.APPLICATION_JSON_UTF8_VALUE))
 	def addBatch(@RequestBody batch: CreateBatch) ={
+		logger.trace("Posting Batch to Livy server")
 		service.postBatch(batch) match {
 			case Right(b) =>
+				logger.debug(s"Successfully posted batch, Received response $b")
 				val uri = ServletUriComponentsBuilder
 					.fromCurrentRequest()
 					.path("/{id}")
